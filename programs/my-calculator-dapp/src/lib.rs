@@ -15,6 +15,20 @@ pub mod my_calculator_dapp {
 
 #derive(Accounts)
 pub struct create<'info> {
+    //init because creating new acct
     #[account(init, player=user, space=264)]
-    pub calculator: Account<'info, Calculator>
+    pub calculator: Account<'info, Calculator>,
+
+    //need to sign the transaction for account creation 
+    #[account(mut)]
+    pub user: Signer<'info>,
+    pub system_program: Program<'info, System>
+}
+
+//what we might get back from Calculator
+#[account]
+pub struct Calculator {
+    pub greeting: String,
+    pub result: i64,
+    pub remainder: i64
 }
