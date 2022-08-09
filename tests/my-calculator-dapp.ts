@@ -7,7 +7,7 @@ describe('mycalculator', () => {
     anchor.setProvider(provider)
     const calculator = anchor.web3.Keypair.generate()
     //allows us to call methods made on solana 
-    const program = anchor.workspace.my-calculator-dapp
+    const program = anchor.workspace.mycalculatordapp
 
     it('Creates a calculator', async () => {
         await program.toPrecision.create("Welcome to Solana", {
