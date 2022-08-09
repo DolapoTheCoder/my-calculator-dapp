@@ -17,6 +17,25 @@ pub mod my_calculator_dapp {
         calculator.result = num1+num2;
         Ok(())
     }
+
+    pub fn multiply(ctx: Context<Multiply>, num1: i64, num2: i64) -> Result<()> {
+        let calculator = &mut ctx.accounts.calculator;
+        calculator.result = num1 * num2;
+        Ok(())
+    }
+
+    pub fn subtraction(ctx: Context<Subtraction>, num1: i64, num2: i64) -> Result<()> {
+        let calculator = &mut ctx.accounts.calculator;
+        calculator.result = num1 - num2;
+        Ok(())
+    }
+
+    pub fn division(ctx: Context<Division>, num1: i64, num2: i64) -> Result<()> {
+        let calculator = &mut ctx.accounts.calculator;
+        calculator.result = num1 / num2;
+        calculator.remainder = num1 % num2; //modulus
+        Ok(())
+    }
 }
 
 #[derive(Accounts)]
@@ -36,6 +55,25 @@ pub struct Addition<'info> {
     #[account(mut)]
     pub calculator: Account<'info, Calculator>
 }
+
+#[derive(Accounts)]
+pub struct Multiply<'info> {
+    #[account(mut)]
+    pub calculator: Account<'info, Calculator>
+}
+
+#[derive(Accounts)]
+pub struct Subtraction<'info> {
+    #[account(mut)]
+    pub calculator: Account<'info, Calculator>
+}
+
+#[derive(Accounts)]
+pub struct Division<'info> {
+    #[account(mut)]
+    pub calculator: Account<'info, Calculator>
+}
+
 
 //what we might get back from Calculator
 #[account]
