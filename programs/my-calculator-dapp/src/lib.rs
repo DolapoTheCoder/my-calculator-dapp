@@ -13,3 +13,8 @@ pub mod my_calculator_dapp {
     } 
 }
 
+#derive(Accounts)
+pub struct create<'info> {
+    #[account(init, player=user, space=264)]
+    pub calculator: Account<'info, Calculator>
+}
