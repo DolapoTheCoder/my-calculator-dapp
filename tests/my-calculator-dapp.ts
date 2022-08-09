@@ -29,7 +29,7 @@ describe('mycalculator', () => {
             }
         })
         const account = await program.account.calculator.fetch(calculator.publicKey)
-        assert.ok(account.result.equal( new anchor.BN(5)));
+        assert.ok(account.result.eq( new anchor.BN(5)));
     });
 
     it('Multiply 2 numebrs', async () => {
@@ -39,7 +39,7 @@ describe('mycalculator', () => {
             }
         })
         const account = await program.account.calculator.fetch(calculator.publicKey)
-        assert.ok(account.result.equal( new anchor.BN(6)));
+        assert.ok(account.result.eq( new anchor.BN(6)));
     });
 
     it('Subtract 2 numebrs', async () => {
@@ -49,7 +49,7 @@ describe('mycalculator', () => {
             }
         })
         const account = await program.account.calculator.fetch(calculator.publicKey)
-        assert.ok(account.result.equal( new anchor.BN(1)));
+        assert.ok(account.result.eq( new anchor.BN(1)));
     });
 
     it('Divide 2 numebrs', async () => {
@@ -59,8 +59,8 @@ describe('mycalculator', () => {
             }
         })
         const account = await program.account.calculator.fetch(calculator.publicKey)
-        assert.ok(account.result.equal( new anchor.BN(1)));
-        assert.ok(account.remainder.equal( new anchor.BN(1)));
+        assert.ok(account.result.eq( new anchor.BN(1)));
+        assert.ok(account.remainder.eq( new anchor.BN(1)));
     });
     
 })
